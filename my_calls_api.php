@@ -1,12 +1,43 @@
 <?php
 const ABSPATH = __DIR__ . '/';
+include_once ABSPATH . 'argv.php';
 include_once ABSPATH . 'config.php';
 include_once ABSPATH . 'dbconfig.php';
 include_once ABSPATH . 'Managers.php';
+// Если аргумент существует, в dateU попадет unix date преобразованная из аргумента, инача unix date сегодняшнего дня
+if(defined('ARG1'))
+{
+    if(($dateTime = date_create_immutable(ARG1)))
+    {
+        $dateStartUnix = $dateTime->format('U');
+        if($dateStartUnix > time())
+        {
+            echo 'Введите корректную дату!';
+            exit();
+        }
+        if(ARG1 == date('Y-m-d'))
+        {
+            $dateEndUnix = time();
+        }
+        else
+        {
+            $dateTimeDay = $dateTime->modify('+1 day');
+            $dateEndUnix = $dateTimeDay->format('U');
+        }
+    }
+    else
+    {
+        echo 'Введите корректную дату!';
+        exit();
+    }
 
-$now = time(); //
-$nowDay = ($now - $now % 86400); // timestamp начала дня
-$string = file_get_contents("https://worktruck.moizvonki.ru/api/v1/?user_name=admin@worktruck.ru&api_key=vow5s7xvh17o6v04588eumb1noe5y5gg&action=calls.list&supervised=1&from_offset=0&from_date=$nowDay&to_date=$now");
+}
+else
+{
+    $dateEndUnix = time();
+    $dateStartUnix = ($dateEndUnix - $dateEndUnix % 86400);
+}
+$string = file_get_contents("https://worktruck.moizvonki.ru/api/v1/?user_name=admin@worktruck.ru&api_key=vow5s7xvh17o6v04588eumb1noe5y5gg&action=calls.list&supervised=1&from_offset=0&from_date=$dateStartUnix&to_date=$dateEndUnix");
 $json = json_decode($string, true);
 $arr_calls = $json['results'];
 $Man = new Managers(MANAGERS);
@@ -26,8 +57,7 @@ $sql = "CREATE TABLE IF NOT EXISTS " . CALLS . " (
             PRIMARY KEY (id)
         )";
 $pdo->exec($sql);
-$dateNow = date('Y-m-d', $now);
-echo $dateNow;
+$dateNow = date('Y-m-d', $dateStartUnix);
 $sql = '';
 foreach ($Man->return() as $email => $manager) {
     $sqlCheck = "SELECT id FROM " . CALLS . " WHERE date='$dateNow' AND email='$email'";
@@ -47,5 +77,4 @@ foreach ($Man->return() as $email => $manager) {
         $sql .= "UPDATE " . CALLS . " SET `count_in` = $inCount, `time_in` = $inTime, `count_out` = $outCount, `time_out` = $outTime WHERE date = '$dateNow' AND email = '$email';";
     }
 }
-echo $sql;
 $pdo->exec($sql);
