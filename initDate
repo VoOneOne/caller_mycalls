@@ -1,0 +1,19 @@
+#!/bin/bash
+php='php.exe'
+date_start=$(date -d $1 +%s)
+day=86400
+date_end=$(date -d $2 +%s)
+date_end=$((date_end + day/2))
+arr_date=[]
+counter=0
+while [[ date_start -lt date_end ]]; do
+    arr_date[$counter]=$(date -d "@$date_start" +%Y-%m-%d)
+    date_start=$((date_start + day))
+    counter=$((counter + 1))
+done
+echo "${arr_date[0]}"
+arr_count=${#arr_date[@]}
+for (( i = 0; i < arr_count; i++ )); do
+  arr_elem="${arr_date[$i]}"
+  $php my_calls_api.php $arr_elem
+done
