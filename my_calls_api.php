@@ -51,9 +51,9 @@ $sql = "CREATE TABLE IF NOT EXISTS " . CALLS . " (
             name VARCHAR(100) NOT NULL,
             email VARCHAR(100) NOT NULL,
             count_in INT(11) NOT NULL,
-            time_in INT(11) NOT NULL,
+            time_in TIME NOT NULL,
             count_out INT(11) NOT NULL,
-            time_out INT(11) NOT NULL,
+            time_out TIME NOT NULL,
             PRIMARY KEY (id)
         )";
 $pdo->exec($sql);
@@ -70,11 +70,11 @@ foreach ($Man->return() as $email => $manager) {
 
     if (!($sth->fetch()))
     {
-        $sql .= "INSERT INTO " . CALLS . " (`date`, `name`, `email`, `count_in`, `time_in`, `count_out`, `time_out`) VALUES ('$dateNow','$name','$email',$inCount,$inTime,$outCount, $outTime);";
+        $sql .= "INSERT INTO " . CALLS . " (`date`, `name`, `email`, `count_in`, `time_in`, `count_out`, `time_out`) VALUES ('$dateNow','$name','$email',$inCount,'$inTime',$outCount, '$outTime');";
     }
     else
     {
-        $sql .= "UPDATE " . CALLS . " SET `count_in` = $inCount, `time_in` = $inTime, `count_out` = $outCount, `time_out` = $outTime WHERE date = '$dateNow' AND email = '$email';";
+        $sql .= "UPDATE " . CALLS . " SET `count_in` = $inCount, `time_in` = '$inTime', `count_out` = $outCount, `time_out` = '$outTime' WHERE date = '$dateNow' AND email = '$email';";
     }
 }
 $pdo->exec($sql);
