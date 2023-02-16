@@ -29,16 +29,35 @@ class Managers
     {
         return substr($email,0, strpos($email, '@'));
     }
-    public function format()
+    private function formatTime()
     {
         foreach ($this->managers as &$manager)
         {
-            $manager[INCOMING]['time'] = date('Y-m-d', $manager[INCOMING]['time']);
-            $manager[OUTGOING]['time'] = date('Y-m-d', $manager[INCOMING]['time']);
+            $manager[INCOMING]['time'] = $this->normal_time($manager[INCOMING]['time']);
+            $manager[OUTGOING]['time'] = $this->normal_time($manager[OUTGOING]['time']);
         }
+    }
+    private function normal_time($time) {
+        $hours =  floor(intval($time) / 60 / 60); //часы
+        $minutes =  floor((intval($time) / 60)) % 60; //минуты
+        $seconds =  floor(intval($time) % 60); //секунды
+        //добавь 0 если врямя меньше 10
+        if ($hours < 10) {
+            $hours = '0' . $hours;
+        }
+        if ($minutes < 10) {
+            $minutes = '0' . $minutes;
+        }
+        if ($seconds < 10) {
+            $seconds = '0' . $seconds;
+        }
+        $times = $hours . ":" . $minutes . ":" . $seconds;
+        echo $times . "\n";
+        return $times;
     }
     public function return()
     {
+        $this->formatTime();
         return $this->managers;
     }
 }
