@@ -52,7 +52,6 @@ class Managers
             $seconds = '0' . $seconds;
         }
         $times = $hours . ":" . $minutes . ":" . $seconds;
-        echo $times . "\n";
         return $times;
     }
     public function return()
