@@ -1,8 +1,8 @@
 <?php
 
-class Update
+class UpdateDB
 {
-    public static function calls($data, $dateStartUnix){
+    public static function managers($data, $dateStartUnix){
         global $pdo;
         $dateNow = date('Y-m-d', $dateStartUnix);
         $sql = '';
@@ -26,4 +26,19 @@ class Update
         }
         $pdo->exec($sql);
     }
+    public static function callBack($data){
+        global $pdo;
+        $dateNow = date('Y-m-d H:i:s', time() + 3 * HOUR);
+        $sql = 'DELETE FROM ' . BASE . ' WHERE name=\'call_back\';' ;
+        $pdo->exec($sql);
+        $sql = '';
+        foreach ($data as $phone){
+            $sql .= 'INSERT INTO ' . BASE . " (name, value, date) VALUES ('call_back', '$phone', '$dateNow');";
+        }
+        $count_phone = count($data);
+        $sql .= 'DELETE FROM ' . BASE . ' WHERE name=\'count_call_back\';' ;
+        $sql .= 'INSERT INTO ' . BASE . " (name, value, date) VALUES ('count_call_back', $count_phone, '$dateNow');";
+        $pdo->exec($sql);
+    }
+
 }

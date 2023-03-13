@@ -19,11 +19,11 @@ class CreateTable
     }
     public static function base(){
         global $pdo;
-        $sql = "CREATE TABLE IF NOT EXISTS " . UNHAND_CALLS . " (
+        $sql = "CREATE TABLE IF NOT EXISTS " . BASE . " (
             id INT(11) NOT NULL AUTO_INCREMENT,
             name VARCHAR(100) NOT NULL,
             value VARCHAR(300) NOT NULL,
-            date DATE
+            date DATETIME,
             PRIMARY KEY (id)        
         )";
         $pdo->exec($sql);

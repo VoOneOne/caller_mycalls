@@ -1,6 +1,6 @@
 <?php
 
-class Calls
+class CallBack
 {
     private array $calls;
     public  function setApiData($calls){
@@ -29,12 +29,13 @@ class Calls
         return false;
     }
     public function getUnansweredCalls()
-    { // Получить номера телефонов, на которые нужно перезвонить неотвеченные звонки
+    {
         $unanswered_calls = [];
         foreach ($this->calls as $client_number => $data) {
             if (!empty($data[INCOMING][UNANSWERED])) {
                 $last_successful_call_time = $this->getLastSuccessfulCallTime($client_number);
                 $last_unsuccessful_call_time = $this->getLastUnsuccessfulIncomingCallTime($client_number);
+                var_dump($last_unsuccessful_call_time);
                 if ($last_unsuccessful_call_time > $last_successful_call_time) $unanswered_calls[] = $client_number;
             }
         }

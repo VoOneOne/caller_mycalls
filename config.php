@@ -76,5 +76,4 @@
     const UNANSWERED = 0;
     const ANSWERED = 1;
     const CALLS = 'api_my_calls';
-    const UNHAND_CALLS = 'api_my_calls_unm';
-    const COUNT_UNHAND_CALLS = 'api_my_calls_count_unm';
+    const BASE = 'api_my_calls_base';
