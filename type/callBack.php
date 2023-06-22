@@ -32,10 +32,10 @@ function callBack(){
         $dateEndUnix = time();
         $dateStartUnix = ($dateEndUnix - $dateEndUnix % 86400);
     }
-    CreateTable::base();
+//    CreateTable::base();
     $arr_calls = GetData::callsList($dateStartUnix, $dateEndUnix);
     $callBack = new CallBack();
     $callBack->setApiData($arr_calls);
-    $unansweredCalls = $callBack->getUnansweredCalls();
-    UpdateDB::callBack($unansweredCalls);
+    //  UpdateDB::callBack($unansweredCalls);
+    return $callBack->getUnansweredCalls();
 }

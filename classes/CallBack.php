@@ -35,7 +35,6 @@ class CallBack
             if (!empty($data[INCOMING][UNANSWERED])) {
                 $last_successful_call_time = $this->getLastSuccessfulCallTime($client_number);
                 $last_unsuccessful_call_time = $this->getLastUnsuccessfulIncomingCallTime($client_number);
-                var_dump($last_unsuccessful_call_time);
                 if ($last_unsuccessful_call_time > $last_successful_call_time) $unanswered_calls[] = $client_number;
             }
         }
