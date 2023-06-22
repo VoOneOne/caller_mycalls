@@ -4,7 +4,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 const ABSPATH = __DIR__ . '/';
 include_once ABSPATH . 'config.php';
-include_once ABSPATH . 'dbconfig.php';
+//include_once ABSPATH . 'dbconfig.php';
 include_once ABSPATH . 'classes/Managers.php';
 include_once ABSPATH . 'classes/UpdateDB.php';
 include_once ABSPATH . 'classes/CreateTable.php';
