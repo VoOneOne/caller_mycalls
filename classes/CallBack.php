@@ -24,7 +24,6 @@ class CallBack
         }
         if ((strlen($client_number) === 12 and substr($client_number, 0, 2) === '+7') or (strlen($client_number) === 7)) {
             return $client_number;
-
         }
         return false;
     }

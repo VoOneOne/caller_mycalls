@@ -1,4 +1,5 @@
 <?php
+namespace MyCalls;
 include_once ABSPATH . 'classes/GetData.php';
 function managers(){
     if(defined('ARG1'))
@@ -33,8 +34,16 @@ function managers(){
         $dateEndUnix = time();
         $dateStartUnix = ($dateEndUnix - $dateEndUnix % 86400);
     }
-    $arr_calls = GetData::callsList($dateStartUnix, $dateEndUnix);
+    $arr_calls = \GetData::callsList($dateStartUnix, $dateEndUnix);
+    var_dump($arr_calls);
+    $ManagersStore = new ManagersStore();
+    foreach ($arr_calls as $arr_call){
+        $Manager = $ManagersStore::getManager($arr_call['user_account']);
+        $Manager->addCall(Call::getCall($arr_call));
+    }
+
     $Man = new Managers(MANAGERS);
     $Man->setApiData($arr_calls);
-    UpdateDB::managers($Man->return(), $dateStartUnix);
+//    var_dump($Man->return());
+//    UpdateDB::managers($Man->return(), $dateStartUnix);
 }
