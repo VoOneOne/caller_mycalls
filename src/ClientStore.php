@@ -18,4 +18,7 @@ class ClientStore
     {
         return self::$clients;
     }
+    public static function deleteClient($phone){
+        unset(self::$clients[$phone]);
+    }
 }

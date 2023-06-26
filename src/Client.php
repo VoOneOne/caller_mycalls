@@ -12,24 +12,55 @@ class Client
     public function __construct($phone)
     {
         $this->phone = $phone;
+        $this->calls = [];
+        $this->NumberOfUnsuccessfulCalls = new NumberOfCalls();
+        $this->NumberOfSuccessfulCalls = new NumberOfCalls();
     }
 
-    public function addCall(Call $Call)
+    public function addCall($Call)
     {
-        if ($Call->answered)
-            $this->NumberOfSuccessfulCalls->addCall($Call->direction);
-        else
-            $this->NumberOfUnsuccessfulCalls->addCall($Call->direction);
-        $this->calls[] = $Call;
+        if ($Call instanceof Call) {
+            switch ($Call->answered){
+                case 0: // звонок не отвечен
+                    $this->NumberOfUnsuccessfulCalls->addCall($Call->direction);
+                    break;
+                default: // звонок отвечен
+                    $this->NumberOfSuccessfulCalls->addCall($Call->direction);
+                    break;
+            }
+            $this->calls[] = $Call;
+        }
     }
 
     public function getNumberOfCalls($answered, $direction = 'total')
     {
-        if ($answered) {
-            return $this->NumberOfSuccessfulCalls->direction;
-        } else {
-            return $this->NumberOfUnsuccessfulCalls->direction;
+        switch ($answered){
+            case 'unanswered':
+                $NumberOfCalls = $this->NumberOfUnsuccessfulCalls;
+                break;
+            case 'answered':
+                $NumberOfCalls = $this->NumberOfSuccessfulCalls;
+                break;
+            default: throw new \Error('Передано неверное значение в $answered');
         }
+        return $NumberOfCalls->$direction;    }
+
+    public function getLastCall()
+    {
+        $callTimeStart = 0;
+        foreach ($this->calls as $call) {
+            if ($callTimeStart < $call->start_time) {
+                $callTimeStart = $call->start_time;
+                $lastCall = $call;
+            }
+        }
+        if (isset($lastCall))
+            return $lastCall;
+        else {
+            var_dump($this);
+            throw new \Error('Звонков не найдено');
+        }
+
     }
 
 

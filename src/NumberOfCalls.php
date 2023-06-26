@@ -4,21 +4,22 @@ namespace MyCalls;
 
 class NumberOfCalls
 {
-    private int $total;
-    private int $incoming;
-    private int $outgoing;
+    private int $total = 0;
+    private int $incoming = 0;
+    private int $outgoing = 0;
 
     public function addCall($name)
     {
         switch ($name){
-            case 'incoming':
+            case 0: //входящий
                 $this->incoming++;
                 $this->total++;
                 break;
-            case 'outgoing':
+            case 1: //исходящий
                 $this->outgoing++;
                 $this->total++;
                 break;
+            default: throw new \Error('неподходящее значеение для звонка');
         }
     }
     public function __get($name)
@@ -28,7 +29,7 @@ class NumberOfCalls
             case 'incoming': return $this->incoming;
             case 'outgoing': return $this->outgoing;
             default:
-                throw new \Exception('Обращение к несуществующему свойству класса' . self::class);
+                throw new \Error('Обращение к несуществующему свойству ' . $name . ' класса ' . self::class);
         }
     }
 }
