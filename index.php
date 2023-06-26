@@ -11,7 +11,7 @@ if (isset($_GET['type'])) {
             $fileName = 'unanswered-customer-calls.php';
             break;
         default:
-            $fileName = 'not-fount.php';
+            $fileName = 'not-found.php';
 
     }
     include 'model/' . $fileName;
