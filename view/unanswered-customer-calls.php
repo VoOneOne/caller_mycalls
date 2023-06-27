@@ -6,12 +6,16 @@
     <title>Данные по моиз звонкам</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo get_request_url_without_parameters() ?>/css/unanswered-customer-calls-line-table.css" />
+    <link rel="stylesheet"
+          href="<?php echo get_request_url_without_parameters() ?>/css/unanswered-customer-calls-line-table.css"/>
 </head>
 <body>
 <div class="container">
-    <h2>Неотвеченные звонки(<?php echo $TableHtml->getRowsCount() ?>)</h2>
     <ul class="responsive-table">
+        <div style="display: flex; align-content: center">
+            <img id="my-calls-img" src="<?php echo get_request_url_without_parameters() ?>/image/i.webp">
+            <h2>Неотвеченные звонки(<?php echo $TableHtml->getRowsCount() ?>)</h2>
+        </div>
         <li class="table-header">
             <div class="col col-1">Номер телефона</div>
             <div class="col col-2">Время звонка</div>
