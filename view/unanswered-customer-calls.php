@@ -14,7 +14,7 @@
     <ul class="responsive-table">
         <div style="display: flex; align-content: center">
             <img id="my-calls-img" src="<?php echo get_request_url_without_parameters() ?>/image/i.webp">
-            <h2>Неотвеченные звонки(<?php echo $TableHtml->getRowsCount() ?>)</h2>
+            <h2>Пропущенные звонки(<?php echo $TableHtml->getRowsCount() ?>)</h2>
         </div>
         <li class="table-header">
             <div class="col col-1">Номер телефона</div>
