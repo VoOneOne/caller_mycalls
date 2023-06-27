@@ -19,9 +19,3 @@ if (isset($_GET['type'])) {
     include 'view/' . $fileName;
 }
 exit();
-
-error_reporting(E_ALL);
-const ABSPATH = __DIR__ . '/';
-$unansweredCalls = callBack();
-$countUnansweredCalls = count($unansweredCalls);
-?>

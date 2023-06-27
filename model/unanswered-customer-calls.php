@@ -16,7 +16,6 @@ foreach ($arr_calls as $arr_call) {
 }
 
 foreach (ClientStore::getClients() as $phone => $Client) {
-    if($Client->getLastCall()->client_number == '+79277276028') var_dump($Client->getNumberOfCalls('answered', 'total'));
     if ($Client->getNumberOfCalls('answered', 'total') > 0 OR $Client->getNumberOfCalls('unanswered', 'incoming') == 0) {
         ClientStore::deleteClient($phone);
     }
