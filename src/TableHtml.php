@@ -4,7 +4,7 @@ namespace MyCalls;
 
 class TableHtml
 {
-    private array $rows;
+    private array $rows = [];
     private int $countRows = 0;
 
     public function getRows($html)
