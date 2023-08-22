@@ -19,11 +19,13 @@
         <li class="table-header">
             <div class="col col-1">Номер телефона</div>
             <div class="col col-2">Время звонка</div>
+            <div class="col col-3">Менеджер</div>
         </li>
         <?php echo $TableHtml->getRows('        
         <li class="table-row">
             <div class="col col-1">%phone$s</div>
             <div class="col col-2">%start_time$s</div>
+            <div class="col col-3">%manager$s</div>
         </li>');
         ?>
     </ul>

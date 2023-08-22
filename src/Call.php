@@ -18,13 +18,17 @@ class Call
 //    private int $duration;
 //    private string $src_number;
 
+    private string $user_account;
+
     private function __construct($data)
     {
+
         $this->direction = $data['direction'];
         $this->client_number = $data['client_number'];
         $this->start_time = $data['start_time'];
         $this->end_time = $data['end_time'];
         $this->answered = $data['answered'];
+        $this->user_account = $data['user_account'];
 //        $this->src_slot = $data['start_time'];
 //        $this->client_name = $data['start_time'];
 //        $this->src_id = $data['start_time'];
@@ -73,6 +77,8 @@ class Call
                 return $this->answered;
             case ('answer_time'):
                 return $this->answer_time;
+            case ('user_account'):
+                return $this->user_account;
             default:
                 new \Exception('Обращение к несуществующему свойству класса' . self::class);
         }

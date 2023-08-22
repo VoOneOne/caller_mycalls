@@ -57,10 +57,24 @@ class Client
         if (isset($lastCall))
             return $lastCall;
         else {
-            var_dump($this);
             throw new \Error('Звонков не найдено');
         }
 
+    }
+    public function getFirstCall()
+    {
+        $callTimeStart = 0;
+        foreach ($this->calls as $call) {
+            if($callTimeStart > $call->start_time OR $callTimeStart === 0) {
+                $callTimeStart = $call->start_time;
+                $firstCall = $call;
+            }
+        }
+        if (isset($firstCall))
+            return $firstCall;
+        else {
+            throw new \Error('Звонков не найдено');
+        }
     }
 
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace MyCalls;
-
+require 'config.php';
 class TableHtml
 {
     private array $rows;
@@ -20,7 +20,10 @@ class TableHtml
     {
         foreach (ClientStore::getClients() as $phone => $client) {
             $lastCall = $client->getLastCall();
-            $this->rows[] = ['phone' => $phone, 'start_time' => $lastCall->start_time];
+            $firstCall = $client->getFirstCall();
+            $managerName = $firstCall->user_account;
+            if(isset(MANAGERS[$managerName]['last_name'])) $managerName = MANAGERS[$managerName]['last_name'];
+            $this->rows[] = ['phone' => $phone, 'start_time' => $lastCall->start_time, 'manager' => $managerName];
             usort($this->rows, function ($a, $b) {
                 return -($a['start_time'] <=> $b['start_time']);
             });
