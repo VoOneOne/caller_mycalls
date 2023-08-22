@@ -33,5 +33,5 @@
 </body>
 </html>
 <script>
-    setTimeout(() => window.location.reload(), 60000);
+    setTimeout(() => window.location.reload(), 5000);
 </script>
