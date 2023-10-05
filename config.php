@@ -79,7 +79,29 @@
             'reg' => 'nn',
             'FIO' => 'Фокусов Михаил Русланович',
             'last_name' => 'Фокусов',
-        ]
+        ],
+        'n.alekseev@worktruck.ru' => [
+            'reg' => 'nn',
+            'FIO' => 'Алексеев',
+            'last_name' => 'Алексеев',
+        ],
+        'i.surikov@worktruck.ru' => [
+            'reg' => 'nn',
+            'FIO' => 'Суриков',
+            'last_name' => 'Суриков',
+        ],
+        'i.surikov@worktruck.ru' => [
+            'reg' => 'nn',
+            'FIO' => 'Суриков',
+            'last_name' => 'Суриков',
+        ],
+        'a.zarubin@worktruck.ru' => [
+            'reg' => 'nn',
+            'FIO' => 'Зарубин',
+            'last_name' => 'Зарубин',
+        ],
+        
+        
     ];
 
     const UNKNOWN = [
