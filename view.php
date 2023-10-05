@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Данные по моиз звонкам</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> 
     <link rel="stylesheet"
-          href="<?php echo get_request_url_without_parameters() ?>/css/unanswered-customer-calls-line-table.css"/>
+        href="/unanswered-customer-calls-line-table.css"/>
 </head>
 <body>
 <div class="container">
     <ul class="responsive-table">
         <div style="display: flex; align-content: center">
-            <img id="my-calls-img" src="<?php echo get_request_url_without_parameters() ?>/image/i.webp">
+            <img id="my-calls-img" src="/i.webp">
             <h2>Пропущенные звонки(<?php echo $TableHtml->getRowsCount() ?>)</h2>
         </div>
         <li class="table-header">
@@ -32,6 +32,6 @@
 </div>
 </body>
 </html>
-<script>
+<!-- <script>
     setTimeout(() => window.location.reload(), 5000);
-</script>
+</script> -->
