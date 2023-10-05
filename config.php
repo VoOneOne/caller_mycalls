@@ -14,7 +14,6 @@
             'reg' => 'msk',
             'FIO' => 'Чувилёв Михаил Александрович',
             'last_name' => 'Чувилёв',
-            'off' => 'true'
         ],
         "zozulya@worktruck.ru" => [
             'reg' => 'nn',

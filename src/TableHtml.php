@@ -22,7 +22,7 @@ class TableHtml
             $lastCall = $client->getLastCall();
             $firstCall = $client->getFirstCall();
             $managerName = $firstCall->user_account;
-            if(isset(MANAGERS[$managerName]['off'])) continue;
+            if(!isset(MANAGERS[$managerName])) continue;
             if(isset(MANAGERS[$managerName]['last_name'])) $managerName = MANAGERS[$managerName]['last_name'];
             $this->rows[] = ['phone' => $phone, 'start_time' => $lastCall->start_time, 'manager' => $managerName];
             usort($this->rows, function ($a, $b) {
