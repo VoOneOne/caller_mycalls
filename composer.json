@@ -1,0 +1,21 @@
+{
+  "name": "mirall/my_calls_api",
+  "description": "description",
+  "authors": [
+    {
+      "name": "Vladimir",
+      "email": "golovanov.v.mir@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"MyCalls\\": "src/"}
+  },
+  "require": {
+    "ext-json": "*"
+  },
+  "config": {
+    "platform": {
+      "php": "7.4.3"
+    }
+  }
+}
