@@ -90,17 +90,21 @@
             'FIO' => 'Суриков',
             'last_name' => 'Суриков',
         ],
-        'i.surikov@worktruck.ru' => [
-            'reg' => 'nn',
-            'FIO' => 'Суриков',
-            'last_name' => 'Суриков',
-        ],
         'a.zarubin@worktruck.ru' => [
             'reg' => 'nn',
             'FIO' => 'Зарубин',
             'last_name' => 'Зарубин',
         ],
-        
+        'yagofarov@worktruck.ru' => [
+            'reg' => 'x',
+            'FIO' => 'Ягофаров',
+            'last_name' => 'Ягофаров',
+        ],
+        'makarov@worktruck.ru' => [
+            'reg' => 'x',
+            'FIO' => 'Макаров',
+            'last_name' => 'Макаров',
+        ],        
         
     ];
 
