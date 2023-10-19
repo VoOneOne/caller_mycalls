@@ -104,8 +104,17 @@
             'reg' => 'x',
             'FIO' => 'Макаров',
             'last_name' => 'Макаров',
-        ],        
-        
+        ],
+        '7904632663@mail.ru' => [
+            'reg' => 'x',
+            'FIO' => 'Каширин',
+            'last_name' => 'Каширин',
+        ],
+        'e.chetvertuhin@worktruck.ru' => [
+            'reg' => 'x',
+            'FIO' => 'Четвертухин',
+            'last_name' => 'Четвертухин',
+        ],
     ];
 
     const UNKNOWN = [
